@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import Users from "./users/Users";
-import CreateUser from "./users/CreateUser";
+import Content from "./content/Content";
 
 function App() {
   return (
     <main>
-      <CreateUser />
-      <Users />
+      <Content />
     </main>
   );
 }
