@@ -84,10 +84,9 @@ router.post("/todo/new", async (req, res) => {
 router.delete("/todo/delete/:id", async (req, res) => {
   const todoId = req.params.id;
   try {
-    const result = await TodoModel.findByIdAndDelete(todoId);
+    await TodoModel.findByIdAndDelete(todoId);
     return res.status(200).json({
       message: "Successfully deleted",
-      result,
     });
   } catch (err) {
     return res.status(400).json({

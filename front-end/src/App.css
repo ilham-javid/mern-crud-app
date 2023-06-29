@@ -1,0 +1,26 @@
+:root {
+    --primary: #D81E58;
+    --secondary: #8A4EFC;
+    --light: #eee;
+    --light-alt: #61759b;
+    --dark: #131a26;
+    --dark-alt: #20283e;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira sans', sans-serif;
+}
+
+body {
+    background-color: var(--dark-alt);
+    color: var(--light);
+}
+
+.App {
+    padding: 32px;
+
+}
