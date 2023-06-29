@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import Content from "./content/Content";
 
 function App() {
   return (
-    <main>
-      <Content />
-    </main>
+    <div className="App">
+      <h1>Weolocme Javid</h1>
+      <h4>Your Tasks</h4>
+      
+    </div>
   );
 }
 

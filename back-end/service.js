@@ -3,17 +3,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const routes = require("./routes/routes");
 
-PORT = 8080;
 DB_URL =
-  "mongodb+srv://admin:admin@merncrud.vvw3uq5.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://admin:admin@mern-todo.pjqbue1.mongodb.net/?retryWrites=true&w=majority";
+PORT = 8080;
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
 app.listen(PORT, () => {
   console.log("Server runs in port", PORT);
 });
 
-app.use(cors());
 app.use(routes);
 
 mongoose

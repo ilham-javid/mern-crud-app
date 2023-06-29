@@ -3,13 +3,13 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
-const UserModal = require("../modals/Users");
+const TodoModel = require("../model/TodoModel");
 
 // Read
 
-router.get("/getUsers", async (req, res) => {
+router.get("/todos", async (req, res) => {
   try {
-    const result = await UserModal.find();
+    const result = await TodoModel.find();
     return res.status(200).json({
       message: "Success",
       result,
@@ -23,10 +23,10 @@ router.get("/getUsers", async (req, res) => {
 
 // Read by Id
 
-router.get("/getUser/:id", async (req, res) => {
-  const userId = req.params.id;
+router.get("/todo/:id", async (req, res) => {
+  const todoId = req.params.id;
   try {
-    const result = await UserModal.findById(userId);
+    const result = await TodoModel.findById(todoId);
     return res.status(200).json({
       message: "Success",
       result,
@@ -40,15 +40,16 @@ router.get("/getUser/:id", async (req, res) => {
 
 // Create
 
-router.post("/createUser", async (req, res) => {
-  const user = req.body;
-  const newUser = new UserModal(user);
+router.post("/todo/new", async (req, res) => {
+  const todo = new TodoModel({
+    text: req.body.text,
+  });
 
   try {
-    await newUser.save();
+    await todo.save();
     return res.status(200).json({
-      message: "New User created successfully",
-      newUser,
+      message: "New todo created successfully",
+      todo,
     });
   } catch (err) {
     return res.status(400).json({
@@ -59,14 +60,33 @@ router.post("/createUser", async (req, res) => {
 
 // Update
 
-router.put("/updateUser/:id", async (req, res) => {
-  const userId = req.params.id;
-  const user = req.body;
+// router.put("/todo/update/:id", async (req, res) => {
+//   const todoId = req.params.id;
+//   const todo = new TodoModel({
+//     text: req.body.text,
+//   });
 
+//   try {
+//     const result = await TodoModel.findByIdAndUpdate(todoId, todo).exec();
+//     return res.status(200).json({
+//       message: "todo updated successfully",
+//       result,
+//     });
+//   } catch (err) {
+//     return res.status(400).json({
+//       error: err.message,
+//     });
+//   }
+// });
+
+// Delete
+
+router.delete("/todo/delete/:id", async (req, res) => {
+  const todoId = req.params.id;
   try {
-    const result = await UserModal.findByIdAndUpdate(userId, user).exec();
+    const result = await TodoModel.findByIdAndDelete(todoId);
     return res.status(200).json({
-      message: "User updated successfully",
+      message: "Successfully deleted",
       result,
     });
   } catch (err) {
@@ -76,15 +96,17 @@ router.put("/updateUser/:id", async (req, res) => {
   }
 });
 
-// Delete
+// Complete
 
-router.delete("/deleteUser/:id", async (req, res) => {
-  const userId = req.params.id;
+router.put("/todo/complete/:id", async (req, res) => {
+  const todoId = req.params.id;
   try {
-    const result = await UserModal.findByIdAndDelete(userId);
+    const todo = await TodoModel.findById(todoId);
+    todo.complete = !todo.complete;
+    todo.save();
     return res.status(200).json({
-      message: "Successfully deleted",
-      result,
+      message: "success",
+      todo,
     });
   } catch (err) {
     return res.status(400).json({
