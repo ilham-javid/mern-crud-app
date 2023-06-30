@@ -63,9 +63,10 @@ const App = () => {
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
           className="todo-input-box"
+          placeholder="Enter your task..."
         />
         <button className="btn" onClick={handleAddTodo}>
-          Add Todo
+          Add
         </button>
       </div>
       <ul>
@@ -81,7 +82,7 @@ const App = () => {
               {todo.text}
             </span>
             <button
-              className="btn delete-todo "
+              className="delete-todo"
               onClick={() => handleDeleteTodo(todo._id)}
             >
               x

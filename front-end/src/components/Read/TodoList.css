@@ -68,3 +68,37 @@
     border-radius: 50%;
 
 }
+
+.todo-input {
+    /* padding: 16px; */
+    display: flex;
+    margin-bottom: 16px;
+}
+.todo-input-box {
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--light);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+    height: 32px;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.btn {
+    border: none;
+    border-radius: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    opacity: 0.8;
+}
+
+.btn:hover {
+    opacity: 1;
+}
