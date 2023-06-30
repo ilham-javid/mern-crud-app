@@ -7,7 +7,6 @@
 .todo-subtitle {
     font-size: 18px;
     color: var(--light-alt);
-    text-transform: uppercase;
     font-weight: 400;
     margin-bottom: 16px;
 }
@@ -55,9 +54,10 @@
     position: absolute;
     top: 50%;
     right: 16px;
-    transform: translateY(-50%);
-    font-size: 16px;
+    transform: translateY(-55%);
+    font-size: 1-px;
 
+    border: none;
     width: 24px;
     height: 24px;
     color: var(--light);
